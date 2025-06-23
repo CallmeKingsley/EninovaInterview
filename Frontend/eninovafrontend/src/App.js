@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import pokemons from '../src/pokedex.json'
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemonList: [],
+      pokemonList: pokemons.pokemon,
       pokemon1: '',
       pokemon2: '',
       result: null,
     };
   }
 
-  componentDidMount() {
-    axios
-      .get('/pokemons.json')
-      .then(response => {
-        this.setState({ pokemonList: response.data });
-      })
-      .catch(error => {
-        console.error('Failed to load Pokémon list:', error);
-      });
-  }
+
 
   handleBattle = () => {
     const { pokemon1, pokemon2 } = this.state;
